@@ -1,0 +1,58 @@
+<!DOCTYPE=html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Очередь заказов ООО &laquo;Локальные системы&raquo;</title>
+  </head>
+    <style>
+         table {
+             border-collapse: collapse;
+             width: 100%;
+         }
+         th, td {
+             border: 1px solid #ddd;
+             padding: 8px;
+             text-align: left;
+         }
+         th {
+             background-color: #f2f2f2;
+         }
+         .status-запланирован { background-color: #d4edda; color: #155724; }
+         .status-собирается { background-color: #fff3cd; color: #856404; }
+         .status-выписка_документов { background-color: #cce5ff; color: #004085; }
+         .status-отобран { background-color: #d1ecf1; color: #0c5460; }
+         .status-отгружен { background-color: #e2e3e5; color: #383d41; }
+         .status-отменен { background-color: #f8d7da; color: #721c24; }
+         .status-cell {
+             padding: 10px;
+             text-align: center;
+             font-weight: bold;
+         }
+     </style>
+  <body>
+  <script>
+    setTimeout(function(){
+      location.reload();
+      }, 10000);
+  </script>
+    <table>
+    <thead>
+      <tr>Очередь заказов ООО &laquo;Локальные системы&raquo;</tr>
+    <tr>
+      <th scope="col">№ подбора</th>
+      <th scope="col">№ заказа</th>
+      <th scope="col">Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for id in orders.values() %}
+        <tr>
+          <td>{{id["ордер"]}}</td>
+          <td>{{id["заказ"]}}</td>
+          <td class="status-cell status-{{id["статус"]}}">{{id["статус"]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+  </body>
+</html>
